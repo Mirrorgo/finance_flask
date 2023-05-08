@@ -29,7 +29,10 @@ def file_reader(path):
 def result_wrapper(result):
     # TODO　转成枚举的形式,比如result_wrapper.success, result_wrapper.failure
 	response={}
-	response["code"] = "20000"
+	response["code"] = 20000
 	response["message"] = "success"
 	response["data"]=result
 	return json.dumps(response)
+
+def get_path(fileName):
+    return "./app/scripts/"+fileName+".py"
