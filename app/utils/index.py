@@ -2,13 +2,17 @@ import subprocess
 import json
 test_file_path = "./app/scripts/test.py"
 
-def file_runner(path):
-    result = subprocess.run(["python3", path], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+def test_fn(a,*args,b):
+    print(a,*args,b)
+
+def file_runner(path,*args):
+    result = subprocess.run(["python3", path,*args], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     if result.returncode == 0:
         print(result.stdout.decode())
         return result.stdout.decode()
     else:
         print(result.stderr.decode())
+        return result.stderr.decode()
 
 
 def file_reader(path):
