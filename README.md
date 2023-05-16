@@ -22,13 +22,15 @@
 
 # 使用方法
 ## (Unix Bash)linux&macOS
+* 删掉.venv文件夹(如果有)
+* `python3 -m venv .venv`
 * `. .venv/bin/activate`
 * `export FLASK_APP="./app/main.py"`
-<!-- * `pip install Flask`
-* `pip install Flask-Cors` -->
+* `pip install Flask`
+* `pip install Flask-Cors`
 * `flask run`
 ## (PowerShell)windows
-* 删掉.venv文件夹
+* 删掉.venv文件夹(如果有)
 * `py -3 -m venv .venv`
 * `.venv\Scripts\activate`
 * `$env:FLASK_APP = ".\app\main.py"`
