@@ -8,22 +8,29 @@ test_file_path = "./app/scripts/test.py"
 def test_fn(a, *args, b):
     print(a, *args, b)
 
+# posix,nt,java， 对应linux/windows/java虚拟机
+def get_sys_code():
+    if(os.name== "nt"): 
+        return "gbk"
+    return "utf-8"
+
 
 def file_runner(path, *args):
-    result = subprocess.run(["python3", path, *args],
+    result = subprocess.run(["python", path, *args],
                             stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     if result.returncode == 0:
-        print(result.stdout.decode())
-        return result.stdout.decode()
+        # print(result.stdout.decode())
+        print(result.stdout.decode(get_sys_code()))
+        return result.stdout.decode(get_sys_code())
     else:
-        print(result.stderr.decode())
-        return result.stderr.decode()
+        print(result.stderr.decode(get_sys_code()))
+        return result.stderr.decode(get_sys_code())
 
 
 def file_reader(path):
     # path为以项目跟根目录为初始目录的相对路径
     file_content = ""
-    with open(path, 'r') as f:  # with方式可以避免没有关闭资源文件产生错误
+    with open(path, 'r',encoding='utf-8') as f:  # with方式可以避免没有关闭资源文件产生错误
         # print ("文件名为: ", f.name)
         # print("读取的数据为:")
         file_content = f.read()
@@ -32,7 +39,7 @@ def file_reader(path):
 
 
 def file_updater(path, file_content):
-    with open(path, 'w') as f:  # with方式可以避免没有关闭资源文件产生错误
+    with open(path, 'w',encoding='utf-8') as f:  # with方式可以避免没有关闭资源文件产生错误
         f.write(file_content)
     return True
 

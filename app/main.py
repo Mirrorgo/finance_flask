@@ -17,7 +17,6 @@ def get_file():
     # path =  request.args.get("path") # 获取path参数
     fileName = request.args.get('fileName')
     path = get_path(fileName)
-    # TODO 改成读取文件的接口
     result = file_reader(path)
     return result_wrapper(result)
 
