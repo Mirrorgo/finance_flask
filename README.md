@@ -46,6 +46,13 @@
 # 用到的第三方库
 * Flask
 * Flask-Cors
+* backtrader
+  * pip install backtrader
+  * https://www.backtrader.com/docu/quickstart/quickstart/
+  * https://github.com/mementum/backtrader
+  * https://zhuanlan.zhihu.com/p/133637955
+* pandas
+  * pip install pandas
 
 ---
 
@@ -60,3 +67,4 @@ vscode选中虚拟环境中的Python以获得更优的代码提示体验
 
 TODO
 前端携带日期参数发送请求到后端并运行脚本
+先做个必须写完整所有算法内容的版本，再写提取公用的函数方法的版本
