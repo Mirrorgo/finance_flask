@@ -1,7 +1,7 @@
 from utils.index import *
 
 
-path = get_path("1")
+path = get_path("testfn")
 result = file_runner(path)
 # result =file_reader(path)
 print(result,"hello")

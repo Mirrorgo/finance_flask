@@ -64,7 +64,34 @@
 vscode选中虚拟环境中的Python以获得更优的代码提示体验
 ![](docs/images/2023-05-09-11-28-06.png)
 
+---
+joinQuant导出股票数据的方法
+```python
+import pandas as pd
+
+# 设置查询日期范围
+start_date = '2023-01-01'
+end_date = '2023-05-16'
+
+# 设置股票代码
+stock_code = '000001.XSHE'  # 替换为你要查询的股票代码
+
+# 获取股票数据
+df = get_price(stock_code, start_date=start_date, end_date=end_date, frequency='daily')
+
+# 导出数据为CSV文件
+# df.to_csv('stock_data.csv', index=False)
+df.to_csv('stock_data.csv')
+print(df)
+```
+
 
 TODO
 前端携带日期参数发送请求到后端并运行脚本
 先做个必须写完整所有算法内容的版本，再写提取公用的函数方法的版本
+
+
+data的所有属性,用`data.__dict__`查看
+
+
+![](docs/images/2023-05-17-10-28-33.png)
