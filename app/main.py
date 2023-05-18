@@ -26,8 +26,8 @@ def run():
     fileName = request.args.get('fileName')
     path = get_path(fileName)
     # print("my args",request.args)
-    # result = file_runner(path,"1","22","333") # 更多参数输入
-    result = file_runner(path)
+    result = file_runner(path,"1","22","333") # 更多参数输入
+    # result = file_runner(path)
     return result_wrapper(result)
 
 

@@ -85,6 +85,10 @@ df.to_csv('stock_data.csv')
 print(df)
 ```
 
+标准算法(其他的算法运行都参照这个): strategyDemo.py
+
+
+
 
 TODO
 前端携带日期参数发送请求到后端并运行脚本

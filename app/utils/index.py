@@ -1,6 +1,7 @@
 import subprocess
 import json
 import os
+from .strategy import strategyLoader
 
 test_file_path = "./app/scripts/test.py"
 
@@ -16,15 +17,26 @@ def get_sys_code():
 
 
 def file_runner(path, *args):
+    # strategyLoader("28")
     result = subprocess.run(["python", path, *args],
                             stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     if result.returncode == 0:
-        # print(result.stdout.decode())
-        print(result.stdout.decode(get_sys_code()))
-        return result.stdout.decode(get_sys_code())
+        lines = result.stdout.decode(get_sys_code()).splitlines()
+        obj = {
+            "result":eval(lines[0]),
+            "dates":eval(lines[1]),
+            "endValue":eval(lines[2]),
+            "yieldRate":eval(lines[3]),
+            "info":"运行成功"
+        }
+        return obj
+        # return json.dumps(obj=obj)
     else:
         print(result.stderr.decode(get_sys_code()))
-        return result.stderr.decode(get_sys_code())
+        obj = {
+            "info":result.stderr.decode(get_sys_code()) # 传递的报错
+        }
+        return obj
 
 
 def file_reader(path):
@@ -56,5 +68,6 @@ def result_wrapper(result):
 def get_path(fileName):
     # return "./app/scripts/"+fileName+".py"
     # 这样应该可以避免系统差异造成的路径问题
-    return os.path.join(os.path.abspath(os.curdir),"app","scripts",(fileName+".py"))
+    return os.path.join(os.path.abspath(os.curdir),"app","scripts",f"fn_{fileName}.py")
+
 
