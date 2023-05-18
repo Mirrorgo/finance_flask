@@ -45,7 +45,16 @@ def update():
 def create():
     id = request.args.get('id')  # 算法Id
     path = get_path(id)
-    # 根据id新建文件
-    with open(path, 'w') as f:
-        f.write('')
+    # # 根据id新建文件
+    # with open(path, 'w') as f:
+    #     f.write('')
+    source_file = open(get_path("template"), 'r')
+    target_file = open(path, 'w')
+    # 从源文件中读取内容并写入目标文件
+    content = source_file.read()
+    target_file.write(content)
+    # 关闭文件
+    source_file.close()
+    target_file.close()
+
     return result_wrapper(True)
